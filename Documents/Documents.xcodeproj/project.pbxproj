@@ -15,6 +15,7 @@
 		1CB7C9502314C8F400C19B94 /* DocumentsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB7C94F2314C8F400C19B94 /* DocumentsUITests.swift */; };
 		1CB7C95E2314C95600C19B94 /* TextFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB7C95D2314C95600C19B94 /* TextFile.swift */; };
 		1CB7C96023155ECF00C19B94 /* DocumentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB7C95F23155ECF00C19B94 /* DocumentViewController.swift */; };
+		1CB7C9622315841100C19B94 /* TextFileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB7C9612315841100C19B94 /* TextFileTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		1CB7C9512314C8F400C19B94 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1CB7C95D2314C95600C19B94 /* TextFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFile.swift; sourceTree = "<group>"; };
 		1CB7C95F23155ECF00C19B94 /* DocumentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentViewController.swift; sourceTree = "<group>"; };
+		1CB7C9612315841100C19B94 /* TextFileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFileTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 				1CB7C93B2314C8F400C19B94 /* Info.plist */,
 				1CB7C95D2314C95600C19B94 /* TextFile.swift */,
 				1CB7C95F23155ECF00C19B94 /* DocumentViewController.swift */,
+				1CB7C9612315841100C19B94 /* TextFileTableViewCell.swift */,
 			);
 			path = Documents;
 			sourceTree = "<group>";
@@ -261,6 +264,7 @@
 			files = (
 				1CB7C95E2314C95600C19B94 /* TextFile.swift in Sources */,
 				1CB7C96023155ECF00C19B94 /* DocumentViewController.swift in Sources */,
+				1CB7C9622315841100C19B94 /* TextFileTableViewCell.swift in Sources */,
 				1CB7C9302314C8F300C19B94 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

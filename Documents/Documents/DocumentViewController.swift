@@ -12,23 +12,53 @@ class DocumentViewController: UIViewController, UITableViewDataSource, UITableVi
     
     
     let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
-    var filesArray: [String] = []
+    var filesArray: [URL] = []
+    var textFileArray: [TextFile] = []
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        filesArray = FileManager.default.contentsOfDirectory(at: documentsURL, includingPropertiesForKeys: nil, options: nil)
+        
+        //let componentsArray: [String]? = FileManager.default.componentsToDisplay(forPath: documentsURL.absoluteString)
+        
+        return textFileArray.count
         
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        <#code#>
+        let cell = tableView.dequeueReusableCell(withIdentifier: "fileCell", for: indexPath) as! TextFileTableViewCell
+        
+        cell.fileNameLabel.text = textFileArray[indexPath.row].Filename
+        
+        return cell
     }
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        let componentsArray: [String]? = FileManager.default.componentsToDisplay(forPath: documentsURL.absoluteString)
+        
+        for component in componentsArray! {
+            var fileName = FileManager.default.displayName(atPath: component)
+            var fileText = FileManager.default.contents(atPath: component)
+            //var fileAttributes = FileManager.default.attributesOfItem(atPath: component)
+            
+            textFileArray.append(TextFile(Filename: fileName, Text: fileText, FileSize: nil, LastModified: nil))
+        }
+    }
+    
+    func createOrModifyFile(){
+        var fileName = ""
+        var fileText = ""
+        var fileURL = documentsURL.appendingPathComponent(fileName).appendingPathExtension("txt")
+        
+        do{
+       try fileText.write(to: fileURL, atomically: true, encoding: String.Encoding.utf8)
+        }
+        catch let error as NSError{
+            print(error)
+        }
+        
     }
     
 
