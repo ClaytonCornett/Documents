@@ -10,6 +10,8 @@ import UIKit
 
 class TextFileTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var lastModifiedLabel: UILabel!
+    @IBOutlet weak var fileSizeLabel: UILabel!
     @IBOutlet weak var fileNameLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()

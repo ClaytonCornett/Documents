@@ -10,10 +10,37 @@ import UIKit
 
 class DocumentViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
+    @IBOutlet weak var addFileButton: UIButton!
+    @IBOutlet weak var TableView: UITableView!
     
     let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
     var filesArray: [URL] = []
     var textFileArray: [TextFile] = []
+    var isPressed = false
+    
+    @IBAction func addFile(_ sender: Any) {
+        isPressed = true
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        
+        if segue.destination is FileViewController
+        {
+            if(isPressed == false){
+            let vc = segue.destination as? FileViewController
+            
+            let row = TableView.indexPathForSelectedRow?.row
+            if(row != nil){
+            vc?.name = textFileArray[row!].Filename
+            vc?.text = textFileArray[row!].Text
+            //vc?.fileWithoutExtension = (textFileArray[row!].FileNameWithoutExtension?.absoluteString)!
+            vc?.fileArray = textFileArray
+            }
+            }
+            
+            }
+        }
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -24,6 +51,7 @@ class DocumentViewController: UIViewController, UITableViewDataSource, UITableVi
         
     }
     
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "fileCell", for: indexPath) as! TextFileTableViewCell
         
@@ -35,15 +63,51 @@ class DocumentViewController: UIViewController, UITableViewDataSource, UITableVi
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        addFileButton.setTitle("Add File", for: .normal)
+        /*
+        let fileName = "Test"
+        let DocumentDirURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+        let fileURL = DocumentDirURL.appendingPathComponent(fileName).appendingPathExtension("txt")
+        
+        print(fileURL.path)
+        let writeString = "Testing for file"
+        do{
+        try writeString.write(to: documentsURL, atomically: true, encoding: String.Encoding.utf8)
+        }catch let error as NSError{
+            print("Failed to write to url")
+            print(error)
+        }
+ */
+        
+        
+        
 
+        var urlArray: [URL] = try! FileManager.default.contentsOfDirectory(at: documentsURL, includingPropertiesForKeys: [], options: [])
+    
+        
         let componentsArray: [String]? = FileManager.default.componentsToDisplay(forPath: documentsURL.absoluteString)
         
-        for component in componentsArray! {
-            var fileName = FileManager.default.displayName(atPath: component)
-            var fileText = FileManager.default.contents(atPath: component)
+        for urlfile in urlArray {
+            var fileName = FileManager.default.displayName(atPath: urlfile.absoluteString)
+            //var fileNameWithoutExtension = Bundle.main.url(forResource: fileName, withExtension: "")
+            //var fileText = FileManager.default.contents(atPath: urlfile.absoluteString)
             //var fileAttributes = FileManager.default.attributesOfItem(atPath: component)
+            var fileText: String = ""
+
+            do {
+                fileText = try String(contentsOf: urlfile, encoding: .utf8)
+            }
+            catch {/* error handling here */}
             
-            textFileArray.append(TextFile(Filename: fileName, Text: fileText, FileSize: nil, LastModified: nil))
+       
+            textFileArray.append(TextFile(Filename: fileName, Text: fileText, FileSize: nil, LastModified: nil, FileNameWithoutExtension: nil))
+            
+            print(fileName)
+            print(fileText)
+            print("This is the file name without extension")
+            //print(fileNameWithoutExtension)
+            
         }
     }
     

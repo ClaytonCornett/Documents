@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1C7547D12316D195008D5522 /* FileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7547D02316D195008D5522 /* FileViewController.swift */; };
 		1CB7C9302314C8F300C19B94 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB7C92F2314C8F300C19B94 /* AppDelegate.swift */; };
 		1CB7C9352314C8F300C19B94 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1CB7C9332314C8F300C19B94 /* Main.storyboard */; };
 		1CB7C9372314C8F400C19B94 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1CB7C9362314C8F400C19B94 /* Assets.xcassets */; };
@@ -36,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1C7547D02316D195008D5522 /* FileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileViewController.swift; sourceTree = "<group>"; };
 		1CB7C92C2314C8F300C19B94 /* Documents.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Documents.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1CB7C92F2314C8F300C19B94 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1CB7C9342314C8F300C19B94 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 				1CB7C95D2314C95600C19B94 /* TextFile.swift */,
 				1CB7C95F23155ECF00C19B94 /* DocumentViewController.swift */,
 				1CB7C9612315841100C19B94 /* TextFileTableViewCell.swift */,
+				1C7547D02316D195008D5522 /* FileViewController.swift */,
 			);
 			path = Documents;
 			sourceTree = "<group>";
@@ -263,6 +266,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1CB7C95E2314C95600C19B94 /* TextFile.swift in Sources */,
+				1C7547D12316D195008D5522 /* FileViewController.swift in Sources */,
 				1CB7C96023155ECF00C19B94 /* DocumentViewController.swift in Sources */,
 				1CB7C9622315841100C19B94 /* TextFileTableViewCell.swift in Sources */,
 				1CB7C9302314C8F300C19B94 /* AppDelegate.swift in Sources */,

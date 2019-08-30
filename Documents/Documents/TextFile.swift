@@ -10,14 +10,16 @@ import Foundation
 
 class TextFile{
     var Filename: String
-    var Text: Data?
+    var Text: String
     var FileSize: Any?
     var LastModified: Date?
+    var FileNameWithoutExtension: URL?
     
-    init(Filename: String, Text: Data?, FileSize: Any?, LastModified: Date?) {
+    init(Filename: String, Text: String, FileSize: Any?, LastModified: Date?, FileNameWithoutExtension: URL?) {
         self.Filename = Filename
         self.Text = Text
         self.FileSize = FileSize
         self.LastModified = LastModified
+        self.FileNameWithoutExtension = FileNameWithoutExtension
     }
 }
