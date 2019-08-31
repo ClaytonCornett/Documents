@@ -24,24 +24,9 @@ class FileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        //var tableCell = DocumentViewController()
-        //var name = tableCell.textFileArray[1].Filename
-       // var text = tableCell.textFileArray[1].Text
-        
-        //let str = String(data: fileArray[1].Text!, encoding: String.Encoding)
-        //TextView.text = text as? Data
-        
-        
         TextField.text = name
         TextView.text = text
-        //TextField.text = fileWithoutExtension
-        
-        
-        //TextView.text = str
-        
-        //TextField.text = fileArray[1].Filename
-        //TextView.text = fileArray[1].Text
-        
+
     }
     
 
@@ -58,11 +43,9 @@ class FileViewController: UIViewController {
                 try fileText!.write(to: fileURL, atomically: true, encoding: .utf8)
             }
             else{
-               // if(FileManager.default.fileExists(atPath: originalFileURL.absoluteString)){
-            //try FileManager.default.removeItem(at: originalFileURL)
             try fileText!.write(to: fileURL, atomically: true, encoding: .utf8)
                     
-               // }
+            
             }
         }
         catch let error as NSError{
@@ -71,7 +54,6 @@ class FileViewController: UIViewController {
         
         fileArray.append(TextFile(Filename: fileName!, Text: fileText!, FileSize: nil, LastModified: nil, FileNameWithoutExtension: nil))
         
-       // navigationController?.popViewController(animated: true)
         
     }
     
@@ -82,7 +64,6 @@ class FileViewController: UIViewController {
             let vc = segue.destination as? DocumentViewController
                 vc?.textFileArray = []
                 vc?.textFileArray = fileArray
-                //vc?.viewDidLoad()
             
             }
         }

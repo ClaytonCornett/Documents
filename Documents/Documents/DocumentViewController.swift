@@ -45,8 +45,6 @@ class DocumentViewController: UIViewController, UITableViewDataSource, UITableVi
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        //let componentsArray: [String]? = FileManager.default.componentsToDisplay(forPath: documentsURL.absoluteString)
-        
         return textFileArray.count
         
     }
@@ -65,34 +63,11 @@ class DocumentViewController: UIViewController, UITableViewDataSource, UITableVi
         super.viewDidLoad()
         
         addFileButton.setTitle("Add File", for: .normal)
-        /*
-        let fileName = "Test"
-        let DocumentDirURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
-        let fileURL = DocumentDirURL.appendingPathComponent(fileName).appendingPathExtension("txt")
         
-        print(fileURL.path)
-        let writeString = "Testing for file"
-        do{
-        try writeString.write(to: documentsURL, atomically: true, encoding: String.Encoding.utf8)
-        }catch let error as NSError{
-            print("Failed to write to url")
-            print(error)
-        }
- */
-        
-        
-        
-
         var urlArray: [URL] = try! FileManager.default.contentsOfDirectory(at: documentsURL, includingPropertiesForKeys: [], options: [])
-    
-        
-        let componentsArray: [String]? = FileManager.default.componentsToDisplay(forPath: documentsURL.absoluteString)
         
         for urlfile in urlArray {
             var fileName = FileManager.default.displayName(atPath: urlfile.absoluteString)
-            //var fileNameWithoutExtension = Bundle.main.url(forResource: fileName, withExtension: "")
-            //var fileText = FileManager.default.contents(atPath: urlfile.absoluteString)
-            //var fileAttributes = FileManager.default.attributesOfItem(atPath: component)
             var fileText: String = ""
 
             do {
