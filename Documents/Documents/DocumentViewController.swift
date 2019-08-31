@@ -106,9 +106,30 @@ class DocumentViewController: UIViewController, UITableViewDataSource, UITableVi
             print(fileName)
             print(fileText)
             print("This is the file name without extension")
-            //print(fileNameWithoutExtension)
+            print(urlfile)
+        
             
         }
+    }
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        
+        let delete = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexPath) in
+            let cell = self.textFileArray[indexPath.row]
+            
+            do {
+                if(FileManager.default.fileExists(atPath: self.textFileArray[indexPath.row].Filename)){
+                try FileManager.default.removeItem(at: NSURL(string: self.textFileArray[indexPath.row].Filename) as! URL)
+                }
+            } catch let error as NSError {
+                print("Error: \(error.domain)")
+            }
+            
+            self.TableView.deleteRows(at: [indexPath], with: .fade)
+        }
+        
+        return [delete]
+        
     }
     
     func createOrModifyFile(){

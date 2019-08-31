@@ -18,6 +18,7 @@ class FileViewController: UIViewController {
     var text: String = ""
     var fileWithoutExtension: String = ""
     var fileArray: [TextFile] = []
+    var isPressed = false
     
     
     override func viewDidLoad() {
@@ -49,16 +50,28 @@ class FileViewController: UIViewController {
         var fileName = TextField.text
         var fileText = TextView.text
         var fileURL = documentsURL.appendingPathComponent(fileName!).appendingPathExtension("txt")
+        var originalFileURL = documentsURL.appendingPathComponent(name).appendingPathExtension("txt")
         
         
         do{
+            if(isPressed){
+                try fileText!.write(to: fileURL, atomically: true, encoding: .utf8)
+            }
+            else{
+               // if(FileManager.default.fileExists(atPath: originalFileURL.absoluteString)){
+            //try FileManager.default.removeItem(at: originalFileURL)
             try fileText!.write(to: fileURL, atomically: true, encoding: .utf8)
+                    
+               // }
+            }
         }
         catch let error as NSError{
             print(error)
         }
         
         fileArray.append(TextFile(Filename: fileName!, Text: fileText!, FileSize: nil, LastModified: nil, FileNameWithoutExtension: nil))
+        
+       // navigationController?.popViewController(animated: true)
         
     }
     
@@ -70,8 +83,10 @@ class FileViewController: UIViewController {
                 vc?.textFileArray = []
                 vc?.textFileArray = fileArray
                 //vc?.viewDidLoad()
+            
             }
         }
+    
     }
     /*
     // MARK: - Navigation
